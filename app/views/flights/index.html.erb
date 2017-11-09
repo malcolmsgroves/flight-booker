@@ -1,0 +1,23 @@
+<div>
+  <%= form_tag do %>
+    <%= label_tag :start_id, "From" %>
+    <%= select_tag(:start_id, options_for_select(@airport_options)) %><br>
+
+    <%= label_tag :finish_id, "To" %>
+    <%= select_tag(:finish_id, options_for_select(@airport_options)) %><br>
+
+    <%= label_tag :start, "Date" %>
+    <%= select_tag(:start, options_for_select(@date_options)) %><br>
+
+    <%= label_tag :passenger_count, "Passenger Count" %>
+    <%= select_tag(:passenger_count, options_for_select(@count_options)) %><br>
+
+    <%= submit_tag("Search") %>
+  <% end %>
+  <% if !@flights.empty? %>
+    <%= "Flights from #{@flights.first.from_airport.name}" +
+         "to #{@flights.first.to_airport.name}" %>
+    <%= render @flights %>
+  <% end %>
+
+</div>

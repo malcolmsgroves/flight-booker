@@ -7,10 +7,10 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @booking = Booking.new(booking_params)
+    @booking = Booking.new(booking_params) # passengers are created automatically
     if @booking.save
-      booking_params[:passengers_attributes].each do |k, v|
-        passenger = @booking.passengers.build(v)
+      @booking.passengers.all.each do |passenger|
+        PassengerMailer.thank_you_email(passenger).deliver_later
       end
     end
     redirect_to @booking

@@ -1,0 +1,12 @@
+<div class="form">
+  <%= form_tag("/bookings/new", method: "get") do %>
+    <% @flights.each do |flight| %>
+      <ul>
+        <%= radio_button_tag(:flight_id, flight.id) %>
+        <%= " Flight Number: #{flight.id}, Date: #{flight.start}" %>
+      </ul>
+    <% end %>
+    <%= hidden_field_tag(:passenger_count, params[:passenger_count]) %>
+    <%= submit_tag("Book!") %>
+  <% end %>
+</div>

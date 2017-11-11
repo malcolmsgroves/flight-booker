@@ -1,0 +1,14 @@
+<div class="booking_form">
+  <%= form_for @booking do |f| %>
+    <%= f.hidden_field :flight_id %>
+    <%= f.fields_for :passengers do |ff| %>
+      <%= ff.label :name %>
+      <%= ff.text_field :name %><br>
+
+      <%= ff.label :email %>
+      <%= ff.text_field :email %><br><br>
+    <% end %>
+
+    <%= f.submit %>
+  <% end %>
+</div>

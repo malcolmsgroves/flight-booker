@@ -12,12 +12,17 @@ airportCodes.each do |code|
   Airport.create(name: code)
 end
 
-20.times do
+50.times do
   airport_ids = (0...6).to_a.shuffle!
   (0...3).each do |index|
-    Flight.create(start: Faker::Date.forward(30),
+    Flight.create(start: Faker::Date.forward(7),
                   duration: 2.hours,
                   start_id: airport_ids[index * 2],
                   finish_id: airport_ids[index * 2 + 1])
   end
+end
+
+10.times do
+  Passenger.create(name: Faker::Name.name,
+                   email: Faker::Internet.email)
 end

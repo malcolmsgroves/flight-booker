@@ -1,5 +1,5 @@
 <div>
-  <%= form_tag do %>
+  <%= form_tag("/search", method: "get") do %>
     <%= label_tag :start_id, "From" %>
     <%= select_tag(:start_id, options_for_select(@airport_options)) %><br>
 
@@ -15,9 +15,11 @@
     <%= submit_tag("Search") %>
   <% end %>
   <% if !@flights.empty? %>
-    <%= "Flights from #{@flights.first.from_airport.name}" +
+    <%= "Flights from #{@flights.first.from_airport.name} " +
          "to #{@flights.first.to_airport.name}" %>
-    <%= render @flights %>
+    <%= render 'booking' %>
+  <% else %>
+    <span>No flights match this criteria!</span>
   <% end %>
 
 </div>

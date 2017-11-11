@@ -7,14 +7,16 @@ class FlightsController < ApplicationController
       [date, f.start]
     end
     @count_options = (1..4).to_a.map { |c| [c, c] }
-    puts user_params
+
     if params[:start]
-      @flights = Flight.search(user_params)
+      @flights = Flight.search(flight_params)
+    else
+      @flights = []
     end
   end
 
   private
-    def user_params
-      params.permit(:start, :start_id, :finish_id)
+    def flight_params
+      params.permit(:start, :start_id, :finish_id, :passenger_count)
     end
 end

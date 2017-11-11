@@ -1,0 +1,8 @@
+<div>
+  <h3><%= "Booking \##{@booking.id}" %></h3>
+  <%= "Flight from #{@booking.flight.from_airport.name} " +
+      "to #{@booking.flight.to_airport.name} " +
+      "on #{@booking.flight.start}"%>
+  <br>
+  <%= render @booking.passengers %>
+</div>
